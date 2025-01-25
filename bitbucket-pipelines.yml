@@ -1,0 +1,20 @@
+image: cirrusci/flutter:latest
+
+pipelines:
+ pull-requests:
+  '**':
+      - step:
+          max-time: 120
+          size: 2x
+          script:
+            - flutter pub get
+            - flutter analyze
+            - flutter build apk
+            - echo "Made a change in build ${BITBUCKET_BUILD_NUMBER}" >> changes.txt
+            - git add changes.txt
+            - git commit -m "Updating changes.txt with latest build number."
+            - git tag -am "Tagging for release ${BITBUCKET_BUILD_NUMBER}" release-${BITBUCKET_BUILD_NUMBER}
+            - git push origin origin release-${BITBUCKET_BUILD_NUMBER}
+          trigger: automatic
+          artifacts:
+            - "build/app/outputs/bundle/release/app-release.aab"
