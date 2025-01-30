@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:zubi/constants.dart';
+import 'package:zubi/views/screens/profile/profile_setting_screen.dart';
+import 'package:zubi/views/screens/videos/add_video.dart';
+import 'package:zubi/views/screens/videos/search_music_page(2).dart';
+import 'package:zubi/views/screens/videos/video_screen.dart';
+import 'package:zubi/views/screens/videos/zubi_add_video_page.dart';
+
+import '../auth/profile_page.dart';
+import '../notifications/NotificationPage.dart';
 
 class CustomPageScreen extends StatefulWidget {
   const CustomPageScreen({super.key});
@@ -13,11 +21,11 @@ class _CustomPageScreenState extends State<CustomPageScreen> {
 
   // List of pages for navigation (If needed in future)
   final List<Widget> _pages = [
-    // const CustomPageScreen(),
-    // const SearchForMusicPage(),
-    // const ZubiAddNewVideoPage(),
-    // const Notificationpage(),
-    // const ProfilePage(),
+    const CustomPageScreen(),
+    const SearchForMusicPage(),
+    const AddVideo(),
+    VideoScreen(),
+    const ProfileSettingScreen(),
   ];
 
   // Method to handle onTap navigation (If needed in future)
@@ -95,7 +103,8 @@ class _CustomPageScreenState extends State<CustomPageScreen> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
                             color: Colors.purple,
                             borderRadius: BorderRadius.circular(12),

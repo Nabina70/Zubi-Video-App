@@ -7,6 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:zubi/constants.dart';
 import 'package:zubi/views/screens/auth/OtpVerification.dart';
 import 'package:zubi/views/screens/splash/language_screen.dart';
+import 'package:zubi/views/screens/videos/custompage.dart';
 import 'package:zubi/views/screens/videos/post_video.dart';
 import 'package:zubi/views/widgets/text_input_field.dart';
 import 'package:zubi/views/screens/videos/customized_homepage.dart';
@@ -281,21 +282,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: Center(
                     child: InkWell(
-                      // onTap: () => authController.loginUser(
-                      //   _emailController.text,
-                      //   _passwordController.text,
-                      // ),
-
-                      // print("login user");
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const CustomizedHomepage())),
-                      // },
-                      child: const Text("Login",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w700)),
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => const CustomizedHomepage()),
+                      ),
+                      child: const Text(
+                        "Sign In",
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
                     ),
                   ),
                 ),

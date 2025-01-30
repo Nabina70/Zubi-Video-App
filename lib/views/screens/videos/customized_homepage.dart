@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:zubi/constants.dart';
+import 'package:zubi/views/screens/about/about_us.dart';
 import 'package:zubi/views/screens/notifications/NotificationPage.dart';
+import 'package:zubi/views/screens/profile/profile_setting_screen.dart';
 import 'package:zubi/views/screens/videos/add_video.dart';
+import 'package:zubi/views/screens/videos/custompage.dart';
+import 'package:zubi/views/screens/videos/search_music_page.dart';
+import 'package:zubi/views/screens/videos/search_screen.dart';
+import 'package:zubi/views/screens/videos/video_screen.dart';
+import 'package:zubi/views/screens/videos/zubi_add_video_page.dart';
 import 'package:zubi/views/widgets/CustomIcon.dart';
 
 class CustomizedHomepage extends StatefulWidget {
@@ -13,6 +20,15 @@ class CustomizedHomepage extends StatefulWidget {
 
 class _CustomizedHomepageState extends State<CustomizedHomepage> {
   int pageIdx = 0;
+
+  // Define the pages
+  final List<Widget> pages = [
+    const Center(child: CustomPageScreen()),
+    const Center(child: SearchMusicPage()),
+    Container(),
+    Center(child: AboutUs()),
+    const Center(child: ProfileSettingScreen()),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +75,7 @@ class _CustomizedHomepageState extends State<CustomizedHomepage> {
           //   label: "Articles"
           // ),
 
-          BottomNavigationBarItem(icon: Icon(Icons.article), label: "Videos"),
+          BottomNavigationBarItem(icon: Icon(Icons.article), label: "About Us"),
 
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
@@ -72,8 +88,10 @@ class _CustomizedHomepageState extends State<CustomizedHomepage> {
           child: const Icon(Icons.add, size: 32),
           onPressed: () {
             // Implementation of add post functionality
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const AddVideo()));
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ZubiAddNewVideoPage()));
           }),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

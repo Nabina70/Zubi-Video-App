@@ -4,6 +4,8 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:zubi/constants.dart';
 import 'package:zubi/views/screens/auth/GoogleSignInScreen.dart';
 import 'package:zubi/views/screens/auth/login_screen.dart';
+import 'package:zubi/views/screens/videos/customized_homepage.dart';
+import 'package:zubi/views/screens/videos/custompage.dart';
 import 'package:zubi/views/widgets/text_input_field.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -63,9 +65,10 @@ class _SignupState extends State<SignupScreen> {
                         bottom: -10,
                         left: 80,
                         child: IconButton(
-                          icon: const Icon(Icons.add_a_photo),
-                          onPressed: () => authController.pickImage(),
-                        ),
+                            icon: const Icon(Icons.add_a_photo),
+                            onPressed: () => {}
+                            // authController.pickImage(),
+                            ),
                       ),
                     ],
                   ),
@@ -143,18 +146,19 @@ class _SignupState extends State<SignupScreen> {
                     ),
                     child: Center(
                       child: InkWell(
-                        onTap: () => authController.registerUser(
-                          _usernameController.text,
-                          _emailController.text,
-                          _phoneNumberController.text,
-                          _passwordController.text,
-                          authController.ProfilePhoto,
-                        ),
-                        // onTap: () => Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //       builder: (context) => const LoginScreen()),
+                        // onTap: () =>
+                        //     authController.registerUser(
+                        //   _usernameController.text,
+                        //   _emailController.text,
+                        //   _phoneNumberController.text,
+                        //   _passwordController.text,
+                        //   authController.ProfilePhoto,
                         // ),
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginScreen()),
+                        ),
                         // },
                         child: const Text("Register",
                             style: TextStyle(
@@ -178,7 +182,7 @@ class _SignupState extends State<SignupScreen> {
                       InkWell(
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(
-                              builder: (context) => const LoginScreen()),
+                              builder: (context) => const CustomPageScreen()),
                         ),
                         child: Text(
                           "Login",
